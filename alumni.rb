@@ -1,5 +1,11 @@
+
+# Something to do with BASH...
 $: << File.expand_path(File.dirname(__FILE__)) + '/lib'
+
+# requires everything in the lib/datastore folder that's an rb file
 Dir[File.dirname(__FILE__) + '/lib/datastore/*.rb'].each {|file| require file }
+
+# requires everything in the lib/models folder that's an rb file
 Dir[File.dirname(__FILE__) + '/lib/models/*.rb'].each {|file| require file }
 
 require 'sinatra'
@@ -23,6 +29,7 @@ class Alumni < Sinatra::Application
 
     @users = Repository.for(:user).all
 
+    # the erb method needs a symbol passed to it
     erb 'users/index'.to_sym
   end
 end
