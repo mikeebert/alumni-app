@@ -1,6 +1,7 @@
 class Goal
 
   attr_reader :name, :description, :user_id
+  attr_accessor :id
 
   def initialize(params = {})
     @name = params[:name]
