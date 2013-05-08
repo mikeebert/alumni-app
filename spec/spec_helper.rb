@@ -2,7 +2,6 @@ $: << File.expand_path(File.dirname(__FILE__)) + '/../'
 $: << File.expand_path(File.dirname(__FILE__)) + '/../lib/'
 
 require 'alumni'
-require 'sinatra'
 require 'rack/test'
 
 #makes Rack::Test available to all contexts
