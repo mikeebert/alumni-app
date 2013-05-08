@@ -1,5 +1,5 @@
 class Skill
-	attr_accessor :title, :description
+	attr_accessor :title, :description, :id
 
 	def initialize(params = {})
 		@title =  params[:title]
