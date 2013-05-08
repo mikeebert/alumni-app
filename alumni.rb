@@ -20,6 +20,10 @@ class Alumni < Sinatra::Application
     @users = Repository.for(:user).all
 
     erb 'users/index'.to_sym
+
+    get '/user_skills' do
+
+    end
   end
 
 
