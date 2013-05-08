@@ -16,13 +16,19 @@ class Alumni < Sinatra::Application
   end
 
   get '/users' do
-    ["me", "you"].each do |name|
-      user = User.new(:name => name, :email => "#{name}@test.com")
-      Repository.for(:user).save(user)
-    end
-
+    setup_users
     @users = Repository.for(:user).all
 
     erb 'users/index'.to_sym
   end
+
+
+  def setup_users
+    ["me", "you"].each do |name|
+      user = User.new(:name => name, 
+                      :email => "#{name}@test.com")
+      Repository.for(:user).save(user)
+    end
+  end
+
 end
