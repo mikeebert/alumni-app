@@ -13,7 +13,7 @@ describe GradClass do
     @grad_class.quarter.should == "spring"
   end
 
-  it "sets a graduation quarter" do
+  it "sets a user_id" do
     @grad_class = GradClass.new(:user_id => "Mike")
     @grad_class.user_id.should == "Mike"
   end
