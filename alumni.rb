@@ -21,9 +21,16 @@ class Alumni < Sinatra::Application
 
     erb 'users/index'.to_sym
 
-    get '/user_skills' do
+  end
 
-    end
+  get '/user_skills' do
+      setup_users
+
+      @user_skills = UserSkills.new
+
+      @repository = Repository.for(:user).records
+      @user_skills.user_id = @repository.id
+
   end
 
 
