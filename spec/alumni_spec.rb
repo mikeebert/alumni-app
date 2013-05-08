@@ -20,14 +20,6 @@ describe Alumni do
     last_response.should be_ok
   end
 
-  it "should load the project page"
-
-  it "should load the pair request page"
-
-  it "should load the tasks page"
-
-  it "should load a page of all the "
-
 private 
 
   def setup_repositories
