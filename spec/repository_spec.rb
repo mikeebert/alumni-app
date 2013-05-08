@@ -8,4 +8,6 @@ describe Repository do
     Repository.register(:user, datastore)
     Repository.for(:user).should == datastore
   end
+
+
 end
