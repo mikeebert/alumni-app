@@ -15,4 +15,10 @@ describe Alumni do
 
     last_response.should be_ok
   end
+
+  it "should load the projects" do
+    get "/projects"
+
+    last_response.should be_ok
+  end
 end

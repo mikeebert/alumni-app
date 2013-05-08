@@ -5,7 +5,8 @@ Dir[File.dirname(__FILE__) + '/lib/models/*.rb'].each {|file| require file }
 require 'sinatra'
 require 'repository'
 
-{:user => Datastore::User.new
+{:user => Datastore::User.new,
+ :project => Datastore::Project.new
 }.each do |type, repo|
   Repository.register(type, repo)
 end
@@ -27,11 +28,11 @@ class Alumni < Sinatra::Application
   end
 
   get '/projects' do
-    project = Project.new(:name => name, :description => "#{name}@test.com", :user_id => "#{name}@test.com")
+    project = Project.new(:name => "Project 1", :description => "Jekyll Blog", :user_id => 101)
     Repository.for(:project).save(project)
 
-    @projects = Repository.for(:user).all
+    @projects = Repository.for(:project).all
 
-    erb 'users/index'.to_sym
+    erb 'projects/index'.to_sym
   end
 end
