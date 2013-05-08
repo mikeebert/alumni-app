@@ -13,5 +13,4 @@ describe UserGradClass do
     @user_grad_class.grad_class_id.should == "1"
   end
 
-
 end
