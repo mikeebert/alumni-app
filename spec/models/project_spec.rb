@@ -10,7 +10,7 @@ describe Project do
   end
 
   it "sets an description for a project" do
-    @project = Project.new(:description => "This is a new project is going to make us milions!")
+    @project = Project.new(:description => "This is a new project is going to make us millions!")
     @project.description.should == "This is a new project is going to make us millions!"
   end
 
