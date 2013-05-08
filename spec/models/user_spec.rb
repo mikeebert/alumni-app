@@ -12,4 +12,6 @@ describe User do
     @user.email.should == "test@test.com"
   end
 
+  
+
 end
