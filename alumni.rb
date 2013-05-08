@@ -25,4 +25,13 @@ class Alumni < Sinatra::Application
 
     erb 'users/index'.to_sym
   end
+
+  get '/projects' do
+    project = Project.new(:name => name, :description => "#{name}@test.com", :user_id => "#{name}@test.com")
+    Repository.for(:project).save(project)
+
+    @projects = Repository.for(:user).all
+
+    erb 'users/index'.to_sym
+  end
 end
