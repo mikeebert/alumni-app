@@ -6,4 +6,12 @@ class User
     @email = params[:email]
   end
 
+  # def name=(input)
+  #   @name = input
+  # end
+
+  # def name
+  #   @name
+  # end
+
 end
