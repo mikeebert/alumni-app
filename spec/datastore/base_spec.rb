@@ -40,5 +40,9 @@ describe Datastore do
     it "returns the object with the id" do
       expect(subject.find_by_id 2).to eq another_object
     end
+
+    it "returns an error if the record is not found" do
+      expect(subject.find_by_id 3).to eq Datastore::RecordNotFound
+    end
   end
 end
