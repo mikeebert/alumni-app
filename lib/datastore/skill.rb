@@ -1,21 +1,5 @@
 module Datastore
-  class Skill
+  class Skill < Datastore::Base
     attr_accessor :records
-
-    def initialize
-      @id = 1
-      @records = {}
-    end
-
-    def save(skill)
-      skill.id = @id
-      @records[@id] = skill
-      @id += 1
-    end
-
-    def all
-    	@records.map {|k,v| v}
-    end
-
   end
 end
