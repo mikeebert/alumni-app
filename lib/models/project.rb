@@ -1,5 +1,5 @@
 class Project
-  attr_accessor :name, :description, :user_id
+  attr_accessor :id, :name, :description, :user_id
 
   def initialize(params = {})
     @name = params[:name]
