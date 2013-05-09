@@ -15,5 +15,9 @@ module Datastore
     def all
       records.map { |k,v| v }
     end
+
+    def find_by_id(id)
+      records.fetch(id)
+    end
   end
 end

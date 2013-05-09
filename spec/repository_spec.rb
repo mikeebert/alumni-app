@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'repository'
-require 'datastore/user'
 
 describe Repository do
   it "should register a repo" do
@@ -8,6 +6,4 @@ describe Repository do
     Repository.register(:user, datastore)
     Repository.for(:user).should == datastore
   end
-
-
 end

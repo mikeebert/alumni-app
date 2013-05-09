@@ -30,9 +30,15 @@ describe Datastore do
     end
   end
 
-  context "#all" do
+  describe "#all" do
     it "reutrns a collection of saved objects" do
       expect(subject.all).to match_array [object, another_object]
+    end
+  end
+
+  describe "#find_by_id" do
+    it "returns the object with the id" do
+      expect(subject.find_by_id 2).to eq another_object
     end
   end
 end
