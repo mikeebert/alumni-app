@@ -17,7 +17,7 @@ module Datastore
     end
 
     def find_by_id(id)
-      records.fetch(id)
+      records.fetch(id, Datastore::RecordNotFound)
     end
   end
 end
