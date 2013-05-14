@@ -4,6 +4,7 @@ Dir[File.dirname(__FILE__) + '/lib/models/*.rb'].each {|file| require file }
 
 require 'sinatra'
 require 'repository'
+require './config/seed'
 
 {:goal => Datastore::Goal.new,
  :grad_class => Datastore::GradClass.new,
@@ -17,26 +18,20 @@ require 'repository'
   Repository.register(type, repo)
 end
 
+Seed.users
+
 class Alumni < Sinatra::Application
   get '/' do
     "Hello World"
   end
 
   get '/users' do
-    setup_users
     @users = Repository.for(:user).all
 
-    # the erb method needs a symbol passed to it
     erb 'users/index'.to_sym
   end
 
-
-  def setup_users
-    ["me", "you"].each do |name|
-      user = User.new(:name => name, 
-                      :email => "#{name}@test.com")
-      Repository.for(:user).save(user)
-    end
+  get '/user/:id' do
+    @user = Repository.for(:user).find_by_id(:id)
   end
-
 end
