@@ -1,4 +1,4 @@
-class UserSkills
+class UserSkill
 	attr_accessor :id, :user_id, :skill_id, :level
 
 	def initialize(params = {})
