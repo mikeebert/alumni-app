@@ -1,17 +1,18 @@
-
-# Something to do with BASH...
 $: << File.expand_path(File.dirname(__FILE__)) + '/lib'
-
-# requires everything in the lib/datastore folder that's an rb file
 Dir[File.dirname(__FILE__) + '/lib/datastore/*.rb'].each {|file| require file }
-
-# requires everything in the lib/models folder that's an rb file
 Dir[File.dirname(__FILE__) + '/lib/models/*.rb'].each {|file| require file }
 
 require 'sinatra'
 require 'repository'
 
-{:user => Datastore::User.new
+{:goal => Datastore::Goal.new,
+ :grad_class => Datastore::GradClass.new,
+ :pair_request => Datastore::PairRequest.new,
+ :project => Datastore::Project.new,
+ :skill => Datastore::Skill.new,
+ :user => Datastore::User.new,
+ :user_grad_class => Datastore::UserGradClass.new,
+ :user_skills => Datastore::UserSkill.new
 }.each do |type, repo|
   Repository.register(type, repo)
 end
