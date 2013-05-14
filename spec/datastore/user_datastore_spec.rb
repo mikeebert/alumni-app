@@ -1,25 +1,16 @@
-require 'datastore/user'
-require 'models/user'
+require 'spec_helper'
+require 'shared_examples/datastore_examples'
 
 describe Datastore::User do
-  it "saves a User object with an id" do
-    datastore = Datastore::User.new
-    user = User.new
+  let(:datastore_class) { Datastore::User }
+  subject { Datastore::User.new }
+  let(:object) { User.new }
+  let(:another_object) { User.new }
 
-    datastore.save(user)
-
-    datastore.records[1].should == user
-    user.id.should == 1
+  before do
+    subject.save(object)
+    subject.save(another_object)
   end
 
-  it "returns all users" do
-    datastore = Datastore::User.new
-    user = User.new
-    user2 = User.new
-
-    datastore.save(user)
-    datastore.save(user2)
-
-    datastore.all.should == [user, user2]
-  end
+  it_behaves_like "datastore"
 end

@@ -1,25 +1,16 @@
-require 'datastore/pair_request'
-require 'models/pair_request'
+require 'spec_helper'
+require 'shared_examples/datastore_examples'
 
 describe Datastore::PairRequest do
-  it "saves a PairRequest object with an id" do
-    datastore = Datastore::PairRequest.new
-    pair_request = PairRequest.new
+  let(:datastore_class) { Datastore::PairRequest }
+  subject { Datastore::PairRequest.new }
+  let(:object) { PairRequest.new }
+  let(:another_object) { PairRequest.new }
 
-    datastore.save(pair_request)
-
-    datastore.records[1].should == pair_request
-    pair_request.id.should == 1
+  before do
+    subject.save(object)
+    subject.save(another_object)
   end
 
-  it "returns all pair_requests" do
-    datastore = Datastore::PairRequest.new
-    pair_request = PairRequest.new
-    pair_request2 = PairRequest.new
-
-    datastore.save(pair_request)
-    datastore.save(pair_request2)
-
-    datastore.all.should == [pair_request, pair_request2]
-  end
+  it_behaves_like "datastore"
 end

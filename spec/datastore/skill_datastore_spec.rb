@@ -1,25 +1,16 @@
-require 'datastore/skill'
-require 'models/skill'
+require 'spec_helper'
+require 'shared_examples/datastore_examples'
 
 describe Datastore::Skill do
-  it "saves a Skill object with an id" do
-    datastore = Datastore::Skill.new
-    skill = Skill.new
+  let(:datastore_class) { Datastore::Skill }
+  subject { Datastore::Skill.new }
+  let(:object) { Skill.new }
+  let(:another_object) { Skill.new }
 
-    datastore.save(skill)
-
-    datastore.records[1].should == skill
-    skill.id.should == 1
+  before do
+    subject.save(object)
+    subject.save(another_object)
   end
 
-  it "returns all skills" do
-    datastore = Datastore::Skill.new
-    skill = Skill.new
-    skill2 = Skill.new
-
-    datastore.save(skill)
-    datastore.save(skill2)
-
-    datastore.all.should == [skill, skill2]
-  end
+  it_behaves_like "datastore"
 end

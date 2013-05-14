@@ -1,27 +1,16 @@
 require 'spec_helper'
+require 'shared_examples/datastore_examples'
 
 describe Datastore::Goal do
+  let(:datastore_class) { Datastore::Goal }
   subject { Datastore::Goal.new }
-  let(:goal1) { Goal.new }
-  let(:goal2) { Goal.new }
+  let(:object) { Goal.new }
+  let(:another_object) { Goal.new }
 
   before do
-    subject.save(goal1)
-    subject.save(goal2)
+    subject.save(object)
+    subject.save(another_object)
   end
 
-  it "saves a Goal object with an id" do
-    subject.records[1].should == goal1
-    expect(goal1.id).to eq 1
-    expect(goal2.id).to eq 2
-  end
-
-  it "saves two Goals with different ids" do
-    records = subject.records.map { |k, v| k }.uniq.length
-    expect(records).to eq 2
-  end
-  
-  it "returns all users" do
-    expect(subject.all).to match_array [goal1, goal2]
-  end
+  it_behaves_like "datastore"
 end
