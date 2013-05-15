@@ -9,4 +9,8 @@ class User
   def projects
     Repository.for(:project).get_user_projects(@id)
   end
+
+  def skills
+    Repository.for(:skill).get_user_skills(@id)
+  end
 end
