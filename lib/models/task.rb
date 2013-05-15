@@ -1,5 +1,5 @@
 class Task
-  attr_accessor :name, :start_date, :user_id
+  attr_accessor :name, :start_date, :user_id, :id
 
   def initialize(params = {})
     @name = params[:name]

@@ -10,10 +10,16 @@ class User
     Repository.for(:project).get_user_projects(@id)
   end
 
+
   def goals
     Repository.for(:goal).get_user_goals(@id)
+  end
 
   def skills
     Repository.for(:skill).get_user_skills(@id)
+  end
+
+  def tasks
+  	Repository.for(:task).get_user_tasks(@id)
   end
 end
