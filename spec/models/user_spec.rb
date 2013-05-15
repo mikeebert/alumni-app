@@ -54,4 +54,19 @@ describe User do
 
     @user.skills.should == [skill]
   end
+
+  it "has no pair requests" do
+    @user.pair_requests.should == []
+  end
+
+  it "has a pair request" do
+    @user_id == 1
+    pair_request_datastore = Datastore::PairRequest.new
+    pair_request = PairRequest.new(:user_id => 1)
+    pair_request_datastore.save(pair_request)
+    Repository.register(:pair_request, pair_request_datastore)
+
+    @user.pair_requests.should == [pair_request]
+  end
+
 end
