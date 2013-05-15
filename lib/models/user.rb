@@ -12,5 +12,8 @@ class User
 
   def goals
     Repository.for(:goal).get_user_goals(@id)
+
+  def skills
+    Repository.for(:skill).get_user_skills(@id)
   end
 end

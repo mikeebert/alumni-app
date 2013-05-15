@@ -41,4 +41,17 @@ describe User do
     @user.goals.should == [goal]
   end
 
+  it "has no skills" do
+    @user.skills.should == []
+  end
+
+  it "has a skill" do
+    @user.id == 1
+    skill_datastore = Datastore::Skill.new
+    skill = Skill.new(:user_id => 1)
+    skill_datastore.save(skill)
+    Repository.register(:skill, skill_datastore)
+
+    @user.skills.should == [skill]
+  end
 end
