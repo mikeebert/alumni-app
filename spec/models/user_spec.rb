@@ -20,13 +20,25 @@ describe User do
   end
 
   it "has a project" do
-    @user.id == 1
     project_datastore = Datastore::Project.new
     project = Project.new(:user_id => 1)
     project_datastore.save(project)
     Repository.register(:project, project_datastore)
 
     @user.projects.should == [project]
+  end
+
+  it "has no goals" do
+    @user.goals.should == []
+  end
+
+  it "has a goal" do
+    goal_datastore = Datastore::Goal.new
+    goal = Goal.new(:user_id => 1)
+    goal_datastore.save(goal)
+    Repository.register(:goal, goal_datastore)
+
+    @user.goals.should == [goal]
   end
 
 end
