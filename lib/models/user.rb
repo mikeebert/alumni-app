@@ -6,12 +6,7 @@ class User
     @email = params[:email]
   end
 
-  # def name=(input)
-  #   @name = input
-  # end
-
-  # def name
-  #   @name
-  # end
-
+  def projects
+    Repository.for(:project).get_user_projects(@id)
+  end
 end

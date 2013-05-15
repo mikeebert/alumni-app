@@ -1,25 +1,21 @@
 require 'datastore/project'
-require 'models/project'
+require 'shared_examples/datastore_examples'
 
 describe Datastore::Project do
-  it "saves a Project object with an id" do
-    datastore = Datastore::Project.new
-    project = Project.new
+  let(:datastore_class) { Datastore::Project }
+  subject { Datastore::Project.new }
+  let(:object) { Project.new }
+  let(:another_object) { Project.new }
 
-    datastore.save(project)
-
-    datastore.records[1].should == project
-    project.id.should == 1
+  before :each do
+    subject.save(object)
+    subject.save(another_object)
   end
 
-  it "returns all projects" do
-    datastore = Datastore::Project.new
-    project1 = Project.new
-    project2 = Project.new
+  it_behaves_like "datastore"
 
-    datastore.save(project1)
-    datastore.save(project2)
-
-    datastore.all.should == [project1, project2]
+  it "gets a user's projects" do
+    subject.find_by_id(1).user_id = 1
+    subject.get_user_projects(1).should == [object]
   end
 end
