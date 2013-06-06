@@ -20,7 +20,6 @@ describe User do
   end
 
   it "has a project" do
-    @user.id == 1
     project_datastore = Datastore::Project.new
     project = Project.new(:user_id => 1)
     project_datastore.save(project)
@@ -29,4 +28,30 @@ describe User do
     @user.projects.should == [project]
   end
 
+  it "has no goals" do
+    @user.goals.should == []
+  end
+
+  it "has a goal" do
+    goal_datastore = Datastore::Goal.new
+    goal = Goal.new(:user_id => 1)
+    goal_datastore.save(goal)
+    Repository.register(:goal, goal_datastore)
+
+    @user.goals.should == [goal]
+  end
+
+  it "has no skills" do
+    @user.skills.should == []
+  end
+
+  it "has a skill" do
+    @user.id == 1
+    skill_datastore = Datastore::Skill.new
+    skill = Skill.new(:user_id => 1)
+    skill_datastore.save(skill)
+    Repository.register(:skill, skill_datastore)
+
+    @user.skills.should == [skill]
+  end
 end
