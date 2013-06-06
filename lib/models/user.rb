@@ -22,4 +22,8 @@ class User
   def tasks
   	Repository.for(:task).get_user_tasks(@id)
   end
+
+  def pair_requests
+    Repository.for(:pair_request).get_user_pair_requests(@id)
+  end
 end
